@@ -40,7 +40,7 @@ class Update extends Controller
 		// 为视图创建控件
 		$this->defaultView->addWidget( new Text("name","名称","",Text::single), 'name' )->addVerifier( NotEmpty::singleton (), "请说点什么" ) ;
 		
-		$this->defaultView->addWidget ( new Select ( 'type', '选择类型', 1 ), 'type' )
+		$this->defaultView->addWidget ( new Select ( 'type', '选择类型'), 'type' )
 								->addOption ( "请选择", null, true)
 								->addOption ( "同学", "tx" )
 								->addOption ( "师生", "ss" )

@@ -44,7 +44,7 @@ class Add extends Controller
 		$this->defaultView->addWidget( new Text("title","标题","",Text::single), 'title' )->addVerifier( NotEmpty::singleton (), "请说点什么" ) ;
 		$this->defaultView->addWidget( new Text("content","群组","",Text::multiple), 'content' )->addVerifier( NotEmpty::singleton (), "请说点什么" ) ;
 		
-		$this->oSelect = new Select ( 'group', '选择类型', 1 );
+		$this->oSelect = new Select ( 'group', '选择类型');
 		$this->oSelect->addOption ( "请选择", null, true) ;
 		$this->oSelect->addVerifier( NotEmpty::singleton (), "请选择类型" );
 		
@@ -62,7 +62,7 @@ class Add extends Controller
 			);
 			
 			
-			$this->pollView->addWidget ( new Select ( 'poll_maxitem', '选择数量', 1 ), 'poll.maxitem' )
+			$this->pollView->addWidget ( new Select ( 'poll_maxitem', '选择数量'), 'poll.maxitem' )
 								->addOption ( "不限制", "0", true)
 								->addOption ( "最多2项", "2" )
 								->addOption ( "最多3项", "3" )
