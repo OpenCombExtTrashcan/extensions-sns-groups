@@ -104,7 +104,9 @@ class Groups extends Extension
 		$this->application()->accessRouter()->addController("oc\\ext\\groups\\group\\Delete",'delete') ;
 		$this->application()->accessRouter()->addController("oc\\ext\\groups\\group\\AddGroup",'addgroup') ;
 		$this->application()->accessRouter()->addController("oc\\ext\\groups\\thread\\Index",'thread.index') ;
+		$this->application()->accessRouter()->addController("oc\\ext\\groups\\thread\\Detail",'thread.detail') ;
 		$this->application()->accessRouter()->addController("oc\\ext\\groups\\thread\\Add",'thread.add') ;
+		$this->application()->accessRouter()->addController("oc\\ext\\groups\\thread\\AddPoll",'thread.addpoll') ;
 		$this->application()->accessRouter()->addController("oc\\ext\\groups\\thread\\Update",'thread.update') ;
 		$this->application()->accessRouter()->addController("oc\\ext\\groups\\thread\\Delete",'thread.delete') ;
 	}

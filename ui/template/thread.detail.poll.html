@@ -1,0 +1,44 @@
+	<div>
+		最多选择：{=$theModel->data('poll.maxitem')}
+	</div>
+	<if "$isInvolved!=1">
+	<div id="items">
+		<foreach for="$theModel->child('poll')->child('item')->childIterator()" item="row" idx="i">
+		<div>
+			<span class='itemContent'>投票内容{=$i+1}</span>：<input type="checkbox" class="items" name="item[]" id="item[]" value="{=$row->data('iid')}" onClick="checkItemSum(this)" />{=$row->data('title')}
+		</div>
+		</foreach>
+	</div>
+	<else/>
+	<div id="items">
+		<foreach for="$theModel->child('poll')->child('item')->childIterator()" item="row" idx="i">
+		<div>
+			<span class='itemContent'>投票内容{=$i+1}</span>：{=$row->data('title')} 票数: {=$row->data('votes')}
+		</div>
+		</foreach>
+	</div>
+	</if>
+	<script>
+	function checkItemSum(obj){
+		var sum=0;
+		if(jQuery(obj).attr("checked")=="checked"){
+			
+			jQuery(".items").each(function(i,v){
+				if(jQuery(v).attr("checked")=="checked"){
+					sum++;
+				}
+			});
+			
+			if(sum > {=$theModel->data('poll.maxitem')}){
+				alert("超出");
+				jQuery(obj).removeAttr("checked");
+			}
+		}
+	}
+	</script>
+	<if "$isInvolved!=1">
+	<input type="hidden" id="t" name="t" value="{= $theRequest->get('t')}" />
+	<input type="hidden" id="id" name="id" value="{= $theRequest->get('tid')}" />
+	<input type="hidden" id="maxitem" name="maxitem" value="{= $theModel->data('poll.maxitem')}" />
+	<input type="submit" value="submit" />
+	</if>

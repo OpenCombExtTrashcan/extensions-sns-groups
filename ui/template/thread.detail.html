@@ -1,0 +1,11 @@
+{* 显示 当前视图 的消息队列 }
+<msgqueue for="$theView" />
+<form action="/?c=groups.thread.addpoll" method="post">
+	<div>
+		群组：{=$theModel->data('title')}
+	</div>
+	<div>
+		内容：{=$theModel->data('content')}
+	</div>
+	<views name='pollView'/>
+</form>
