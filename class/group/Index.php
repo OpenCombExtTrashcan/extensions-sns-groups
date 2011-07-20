@@ -30,15 +30,12 @@ class Index extends Controller
 {
 	protected function init()
 	{
-		
-		
-		
-		$this->createView("defaultView", "group.index.html") ;
+		$this->createView("Index", "group.index.html") ;
 		
 		$this->model = Model::fromFragment('group',array(),true);
 		
 		//设置model
-		$this->defaultView->setModel($this->model) ;
+		$this->viewIndex->setModel($this->model) ;
 		
 	}
 	
@@ -46,10 +43,6 @@ class Index extends Controller
 	{
 		$this->model->load();
 		
-//		$this->model->printStruct() ;
-//		foreach ($this->model->childIterator() as $row){
-//			echo "<pre>";print_r($row->data("text"));echo "</pre>";
-//		}
 	}
 }
 

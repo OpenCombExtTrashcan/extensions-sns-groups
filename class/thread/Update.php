@@ -34,23 +34,17 @@ class Update extends Controller
 {
 	protected function init()
 	{
-		
-		
-
 		//创建视图
-		$this->createView("defaultView", "thread.update.html",true) ;
-		
-		
-		
+		$this->createView("Update", "thread.update.html",true) ;
 		
 		// 为视图创建控件
-		$this->defaultView->addWidget( new Text("content","群组","",Text::multiple), 'content' )->addVerifier( NotEmpty::singleton (), "请说点什么" ) ;
+		$this->viewUpdate->addWidget( new Text("content","群组","",Text::multiple), 'content' )->addVerifier( NotEmpty::singleton (), "请说点什么" ) ;
 		
 		$this->oSelect = new Select ( 'group', '选择类型');
 		$this->oSelect->addOption ( "请选择", null, true) ;
 		$this->oSelect->addVerifier( NotEmpty::singleton (), "请选择类型" );
 		
-		$this->defaultView->addWidget ( $this->oSelect, 'gid' );
+		$this->viewUpdate->addWidget ( $this->oSelect, 'gid' );
 		
 		if($this->aParams->get("t")=="thread")
 		{
@@ -59,7 +53,7 @@ class Update extends Controller
 		}
 		elseif ($this->aParams->get("t")=="poll")
 		{
-			$this->defaultView->add(
+			$this->viewUpdate->add(
 				$this->pollView = new View("pollView", "thread.update.poll.html")
 			);
 			
@@ -75,7 +69,7 @@ class Update extends Controller
 		}
 		
 		//设置model
-		$this->defaultView->setModel($this->model) ;
+		$this->viewUpdate->setModel($this->model) ;
 		
 	}
 	
@@ -90,18 +84,18 @@ class Update extends Controller
 		}
 		
 		
-		$this->defaultView->model()->load($this->aParams->get("tid"),"tid");
-		$this->defaultView->exchangeData(DataExchanger::MODEL_TO_WIDGET) ;
+		$this->viewUpdate->model()->load($this->aParams->get("tid"),"tid");
+		$this->viewUpdate->exchangeData(DataExchanger::MODEL_TO_WIDGET) ;
 		
 		if($this->aParams->get("t")=="poll")
 		{
 			$i=0;
-			foreach ($this->defaultView->model()->child("poll")->child("item")->childIterator() as $row)
+			foreach ($this->viewUpdate->model()->child("poll")->child("item")->childIterator() as $row)
 			{
 				if($row["votes"] > 0)
 				{
-				    $this->defaultView->createMessage( Message::failed, "此投票已经有人参与，不可以修改！" ) ;
-				    $this->defaultView->hideForm();
+				    $this->viewUpdate->createMessage( Message::failed, "此投票已经有人参与，不可以修改！" ) ;
+				    $this->viewUpdate->hideForm();
             		$this->pollView->disable();
 				}
 				$this->pollView->addWidget( new Text("poll_item_title_".$i,"投票内容",$row->data("title"),Text::single), 'item.title' );
@@ -110,45 +104,45 @@ class Update extends Controller
 		}
 		
 				
-		if( $this->defaultView->isSubmit( $this->aParams ) )		 
+		if( $this->viewUpdate->isSubmit( $this->aParams ) )		 
 		{
             // 加载 视图窗体的数据
-            $this->defaultView->loadWidgets( $this->aParams ) ;
+            $this->viewUpdate->loadWidgets( $this->aParams ) ;
             
             // 校验 视图窗体的数据
-            if( $this->defaultView->verifyWidgets() )
+            if( $this->viewUpdate->verifyWidgets() )
             {
-            	$this->defaultView->exchangeData(DataExchanger::WIDGET_TO_MODEL) ;
-				$this->defaultView->model()->setData('time',time()) ;
+            	$this->viewUpdate->exchangeData(DataExchanger::WIDGET_TO_MODEL) ;
+				$this->viewUpdate->model()->setData('time',time()) ;
 				
 				if($this->aParams->get("t")=="poll")
 				{
-					$this->defaultView->model()->child('poll')->child('item')->delete();
-					$this->defaultView->model()->child('poll')->child('item')->clearChildren() ;
+					$this->viewUpdate->model()->child('poll')->child('item')->delete();
+					$this->viewUpdate->model()->child('poll')->child('item')->clearChildren() ;
 					
 					for($i = 0; $i < $this->aParams->get("itemSum"); $i++){
 						if($this->aParams->get("poll_item_title_".$i))
 						{
-						    $item = $this->defaultView->model()->child('poll')->child('item')->createChild();
+						    $item = $this->viewUpdate->model()->child('poll')->child('item')->createChild();
 					    	$item->setData("title",$this->aParams->get("poll_item_title_".$i));
-					    	$item->setData("tid",$this->defaultView->model()->data("tid"));
+					    	$item->setData("tid",$this->viewUpdate->model()->data("tid"));
 						}
 						
 					}
 				}
 				
             	try {
-            		if( $this->defaultView->model()->save() )
+            		if( $this->viewUpdate->model()->save() )
             		{
-            			$this->defaultView->createMessage( Message::failed, "修改成功！" ) ;
-            			$this->defaultView->hideForm();
+            			$this->viewUpdate->createMessage( Message::failed, "修改成功！" ) ;
+            			$this->viewUpdate->hideForm();
             			$this->pollView->disable();
             			//Relocater::locate("/?c=groups.thread.index", "修改成功！") ;
             		}
             		
             		else 
             		{
-            			$this->defaultView->createMessage( Message::failed, "修改失败！" ) ;
+            			$this->viewUpdate->createMessage( Message::failed, "修改失败！" ) ;
             			$this->pollView->disable();
 	            		//Relocater::locate("/?c=groups.thread.index", "修改失败！") ;
             		}

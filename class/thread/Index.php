@@ -30,15 +30,12 @@ class Index extends Controller
 {
 	protected function init()
 	{
-		
-		
-		
-		$this->createView("defaultView", "thread.index.html") ;
+		$this->createView("Index", "thread.index.html") ;
 		
 		$this->model = Model::fromFragment('thread',array(),true);
 		
 		//设置model
-		$this->defaultView->setModel($this->model) ;
+		$this->viewIndex->setModel($this->model) ;
 		
 	}
 	

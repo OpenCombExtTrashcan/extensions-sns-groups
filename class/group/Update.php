@@ -31,16 +31,13 @@ class Update extends Controller
 {
 	protected function init()
 	{
-		
-		
-
 		//创建视图
-		$this->createView("defaultView", "group.update.html",true) ;
+		$this->createView("Update", "group.update.html",true) ;
 		
 		// 为视图创建控件
-		$this->defaultView->addWidget( new Text("name","名称","",Text::single), 'name' )->addVerifier( NotEmpty::singleton (), "请说点什么" ) ;
+		$this->viewUpdate->addWidget( new Text("name","名称","",Text::single), 'name' )->addVerifier( NotEmpty::singleton (), "请说点什么" ) ;
 		
-		$this->defaultView->addWidget ( new Select ( 'type', '选择类型'), 'type' )
+		$this->viewUpdate->addWidget ( new Select ( 'type', '选择类型'), 'type' )
 								->addOption ( "请选择", null, true)
 								->addOption ( "同学", "tx" )
 								->addOption ( "师生", "ss" )
@@ -51,38 +48,38 @@ class Update extends Controller
 		$this->model = Model::fromFragment('group');
 		
 		//设置model
-		$this->defaultView->setModel($this->model) ;
+		$this->viewUpdate->setModel($this->model) ;
 		
 	}
 	
 	public function process()
 	{
-		$this->defaultView->model()->load($this->aParams->get("gid"),"gid");
+		$this->viewUpdate->model()->load($this->aParams->get("gid"),"gid");
 		
-		$this->defaultView->exchangeData(DataExchanger::MODEL_TO_WIDGET) ;
+		$this->viewUpdate->exchangeData(DataExchanger::MODEL_TO_WIDGET) ;
 		
-		$this->defaultView->model()->setData('time',time()) ;
+		$this->viewUpdate->model()->setData('time',time()) ;
 				
-		if( $this->defaultView->isSubmit( $this->aParams ) )		 
+		if( $this->viewUpdate->isSubmit( $this->aParams ) )		 
 		{
             // 加载 视图窗体的数据
-            $this->defaultView->loadWidgets( $this->aParams ) ;
+            $this->viewUpdate->loadWidgets( $this->aParams ) ;
             
             // 校验 视图窗体的数据
-            if( $this->defaultView->verifyWidgets() )
+            if( $this->viewUpdate->verifyWidgets() )
             {
-            	$this->defaultView->exchangeData(DataExchanger::WIDGET_TO_MODEL) ;
+            	$this->viewUpdate->exchangeData(DataExchanger::WIDGET_TO_MODEL) ;
             	
             	try {
-            		if( $this->defaultView->model()->save() )
+            		if( $this->viewUpdate->model()->save() )
             		{
-	            		$this->defaultView->createMessage( Message::success, "修改成功！" ) ;
-	            		$this->defaultView->hideForm() ;
+	            		$this->viewUpdate->createMessage( Message::success, "修改成功！" ) ;
+	            		$this->viewUpdate->hideForm() ;
             		}
             		
             		else 
             		{
-	            		$this->defaultView->createMessage( Message::success, "修改成功！" ) ;
+	            		$this->viewUpdate->createMessage( Message::success, "修改成功！" ) ;
             		}
             			
             	} catch (ExecuteException $e) {

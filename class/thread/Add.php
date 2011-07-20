@@ -67,12 +67,13 @@ class Add extends Controller
 			}
 			
 			$this->createModel('thread',array("poll"=>array("item"))) ;
+		
+			$this->viewThreadForm->viewPoll->setModel($this->modelThread) ;
 		}
 		
 		
 		//设置model
 		$this->viewThreadForm->setModel($this->modelThread) ;
-		$this->viewThreadForm->viewPoll->setModel($this->modelThread) ;
 		
 		
 		// 创建模型

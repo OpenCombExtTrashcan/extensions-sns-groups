@@ -32,15 +32,12 @@ class Add extends Controller
 {
 	protected function init()
 	{
-		
-		
-		
-		$this->createView("defaultView", "group.add.html",true) ;
+		$this->createView("Add", "group.add.html",true) ;
 		
 		// 为视图创建控件
-		$this->defaultView->addWidget( new Text("name","名称","",Text::single), 'name' )->addVerifier( NotEmpty::singleton (), "请说点什么" ) ;
+		$this->viewAdd->addWidget( new Text("name","名称","",Text::single), 'name' )->addVerifier( NotEmpty::singleton (), "请说点什么" ) ;
 		
-		$this->defaultView->addWidget ( new Select ( 'type', '选择类型'), 'type' )
+		$this->viewAdd->addWidget ( new Select ( 'type', '选择类型'), 'type' )
 								->addOption ( "请选择", null, true)
 								->addOption ( "同学", "tx" )
 								->addOption ( "师生", "ss" )
@@ -51,35 +48,35 @@ class Add extends Controller
 		$this->model = Model::fromFragment('group');
 		
 		//设置model
-		$this->defaultView->setModel($this->model) ;
+		$this->viewAdd->setModel($this->model) ;
 		
 	}
 	
 	public function process()
 	{
 	
-		if( $this->defaultView->isSubmit( $this->aParams ) )
+		if( $this->viewAdd->isSubmit( $this->aParams ) )
 		{
             // 加载 视图窗体的数据
-            $this->defaultView->loadWidgets( $this->aParams ) ;
+            $this->viewAdd->loadWidgets( $this->aParams ) ;
             
             // 校验 视图窗体的数据
-            if( $this->defaultView->verifyWidgets() )
+            if( $this->viewAdd->verifyWidgets() )
             {
-            	$this->defaultView->exchangeData(DataExchanger::WIDGET_TO_MODEL) ;
+            	$this->viewAdd->exchangeData(DataExchanger::WIDGET_TO_MODEL) ;
             	
-				$this->defaultView->model()->setData('uid',IdManager::fromSession()->currentId()->userId()) ;
-				$this->defaultView->model()->setData('time',time()) ;
+				$this->viewAdd->model()->setData('uid',IdManager::fromSession()->currentId()->userId()) ;
+				$this->viewAdd->model()->setData('time',time()) ;
 				
             	try {
-            		if( $this->defaultView->model()->save() )
+            		if( $this->viewAdd->model()->save() )
             		{
-            			$this->defaultView->createMessage( Message::success, "发布成功！" ) ;
-            			$this->defaultView->hideForm() ;
+            			$this->viewAdd->createMessage( Message::success, "发布成功！" ) ;
+            			$this->viewAdd->hideForm() ;
             		}
             		else 
             		{
-            			$this->defaultView->createMessage( Message::failed, "遇到错误！" ) ;
+            			$this->viewAdd->createMessage( Message::failed, "遇到错误！" ) ;
             		}
             		
             			

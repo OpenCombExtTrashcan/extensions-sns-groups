@@ -34,21 +34,17 @@ class Detail extends Controller
 {
 	protected function init()
 	{
-		
-		
-
 		//创建视图
-		$this->createView("defaultView", "thread.detail.html",true) ;
-		
+		$this->createView("Detail", "thread.detail.html",true) ;
 		
 		// 为视图创建控件
-		$this->defaultView->addWidget( new Text("content","群组","",Text::multiple), 'content' )->addVerifier( NotEmpty::singleton (), "请说点什么" ) ;
+		$this->viewDetail->addWidget( new Text("content","群组","",Text::multiple), 'content' )->addVerifier( NotEmpty::singleton (), "请说点什么" ) ;
 		
 		$this->oSelect = new Select ( 'group', '选择类型');
 		$this->oSelect->addOption ( "请选择", null, true) ;
 		$this->oSelect->addVerifier( NotEmpty::singleton (), "请选择类型" );
 		
-		$this->defaultView->addWidget ( $this->oSelect, 'gid' );
+		$this->viewDetail->addWidget ( $this->oSelect, 'gid' );
 		
 		if($this->aParams->get("t")=="thread")
 		{
@@ -57,7 +53,7 @@ class Detail extends Controller
 		}
 		elseif ($this->aParams->get("t")=="poll")
 		{
-			$this->defaultView->add(
+			$this->viewDetail->add(
 				$this->pollView = new View("pollView", "thread.detail.poll.html")
 			);
 			
@@ -76,15 +72,15 @@ class Detail extends Controller
 		}
 		
 		//设置model
-		$this->defaultView->setModel($this->model) ;
+		$this->viewDetail->setModel($this->model) ;
 		
 	}
 	
 	public function process()
 	{
 		
-		$this->defaultView->model()->load($this->aParams->get("tid"),"tid");
-		$this->defaultView->exchangeData(DataExchanger::MODEL_TO_WIDGET) ;
+		$this->viewDetail->model()->load($this->aParams->get("tid"),"tid");
+		$this->viewDetail->exchangeData(DataExchanger::MODEL_TO_WIDGET) ;
 	}
 }
 
