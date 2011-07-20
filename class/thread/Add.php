@@ -30,62 +30,68 @@ use jc\mvc\view\DataExchanger ;
 class Add extends Controller
 {
 	protected function init()
-	{
+	{		
+		// 创建视图
 		$this->createFormView("ThreadForm", "thread.add.html") ;
-		
 		
 	    // 为视图创建控件
 		$this->viewThreadForm->addWidget( new Text("title","标题","",Text::single), 'title' )->addVerifier( NotEmpty::singleton (), "请说点什么" ) ;
 		$this->viewThreadForm->addWidget( new Text("content","群组","",Text::multiple), 'content' )->addVerifier( NotEmpty::singleton (), "请说点什么" ) ;
 		
-		$this->oSelect = new Select ( 'group', '选择类型' );
-		$this->oSelect->addOption ( "请选择", null, true) ;
-		$this->oSelect->addVerifier( NotEmpty::singleton (), "请选择类型" );
-		
-		$this->viewThreadForm->addWidget ( $this->oSelect, 'gid' );
+		$this->viewThreadForm->addWidget( new Select ( 'group', '选择类型' ), 'gid' )
+						->addOption ( "请选择", null, true)
+						->addVerifier( NotEmpty::singleton (), "请选择类型" ) ;
 			
 		if($this->aParams->get("t")=="")
 		{
-			$this->model = Model::fromFragment('thread');
-			
+			$this->createModel('thread') ;
 		}
 		elseif ($this->aParams->get("t")=="poll")
 		{
+			// 创建子视图
 			$this->viewThreadForm->add(
 				new View("Poll", "thread.add.poll.html")
 			);
 			
-			
+			// 为子视图创建控件
 			$this->viewThreadForm->viewPoll->addWidget ( new Select ( 'poll_maxitem', '选择数量' ), 'poll.maxitem' )
-								->addOption ( "不限制", "0", true)
-								->addOption ( "最多2项", "2" )
-								->addOption ( "最多3项", "3" )
+						->addOption ( "不限制", "0", true)
+						->addOption ( "最多2项", "2" )
+						->addOption ( "最多3项", "3" )
 						->addVerifier( NotEmpty::singleton (), "请选择数量" ) ;
-						
-			$this->viewThreadForm->viewPoll->addWidget( new Text("poll_item_title","投票内容","",Text::single), 'item.title' )->addVerifier( NotEmpty::singleton (), "请说点什么" ) ;
+
+			for($i=1;$i<=5;$i++)
+			{
+				$this->viewThreadForm->viewPoll->addWidget( new Text("poll_item_title_".$i,"投票内容"), 'item.title' )
+							->addVerifier( NotEmpty::singleton (), "请说点什么" ) ;
+			}
 			
-			$this->model = Model::fromFragment('thread',array("poll"=>array("item")));
+			$this->createModel('thread',array("poll"=>array("item"))) ;
 		}
 		
 		
 		//设置model
-		$this->viewThreadForm->setModel($this->model) ;
-		$this->viewThreadForm->viewPoll->setModel($this->model) ;
+		$this->viewThreadForm->setModel($this->modelThread) ;
+		$this->viewThreadForm->viewPoll->setModel($this->modelThread) ;
 		
+		
+		// 创建模型
+		$this->createModel('user',array("group"),true) ;
 	}
 	
 	public function process()
 	{
+		// 登录身份验证
 		$this->requireLogined() ;
 		
-		$oUserModel = Model::fromFragment('user',array("group"),true);
-		$oUserModel->load(IdManager::fromSession()->currentId()->userId(),"uid");
+				
+		$this->modelUser->load(IdManager::fromSession()->currentId()->userId(),"uid");
 		//$oUserModel->printStruct();
 		
-		foreach ($oUserModel->childIterator() as $row){
-			$this->oSelect	->addOption ($row->child("group")->data("name"),$row->child("group")->data("gid"));
+		$aSelect = $this->viewThreadForm->widget('group') ;
+		foreach ($this->modelUser->childIterator() as $row){
+			$aSelect->addOption ($row->child("group")->data("name"),$row->child("group")->data("gid"));
 		}
-		
 		
 		if( $this->viewThreadForm->isSubmit( $this->aParams ) )
 		{
