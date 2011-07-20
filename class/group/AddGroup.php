@@ -31,7 +31,7 @@ use jc\mvc\view\DataExchanger;
  */
 class AddGroup extends Controller {
 	protected function init() {
-		// 网页框架
+		
 		$this->add ( new FrontFrame () );
 		
 		//设置model
