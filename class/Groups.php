@@ -14,10 +14,27 @@ class Groups extends Extension
 {
 	public function load()
 	{
-		
-    	// 取得模型关系图的单件实例
-        $aAssocMap = PrototypeAssociationMap::singleton() ;
-    	$aAssocMap->addOrm(
+		// 定义ORM
+        $this->defineOrm(PrototypeAssociationMap::singleton()) ;    	
+        
+		///////////////////////////////////////
+		// 向系统添加控制器
+		$this->application()->accessRouter()->addController("oc\\ext\\groups\\group\\Index",'index') ;
+		$this->application()->accessRouter()->addController("oc\\ext\\groups\\group\\Add",'add') ;
+		$this->application()->accessRouter()->addController("oc\\ext\\groups\\group\\Update",'update') ;
+		$this->application()->accessRouter()->addController("oc\\ext\\groups\\group\\Delete",'delete') ;
+		$this->application()->accessRouter()->addController("oc\\ext\\groups\\group\\AddGroup",'addgroup') ;
+		$this->application()->accessRouter()->addController("oc\\ext\\groups\\thread\\Index",'thread.index') ;
+		$this->application()->accessRouter()->addController("oc\\ext\\groups\\thread\\Detail",'thread.detail') ;
+		$this->application()->accessRouter()->addController("oc\\ext\\groups\\thread\\Add",'thread.add') ;
+		$this->application()->accessRouter()->addController("oc\\ext\\groups\\thread\\AddPoll",'thread.addpoll') ;
+		$this->application()->accessRouter()->addController("oc\\ext\\groups\\thread\\Update",'thread.update') ;
+		$this->application()->accessRouter()->addController("oc\\ext\\groups\\thread\\Delete",'thread.delete') ;
+	}
+	
+	public function defineOrm(PrototypeAssociationMap $aAssocMap)
+	{
+		$aAssocMap->addOrm(
                 	array(
                 		'keys' => 'gid' ,
                 		'table' => 'group' ,
@@ -95,22 +112,7 @@ class Groups extends Extension
                 		'table' => 'poll_item',
                 	)
         ) ;
-        
-		///////////////////////////////////////
-		// 向系统添加控制器
-		$this->application()->accessRouter()->addController("oc\\ext\\groups\\group\\Index",'index') ;
-		$this->application()->accessRouter()->addController("oc\\ext\\groups\\group\\Add",'add') ;
-		$this->application()->accessRouter()->addController("oc\\ext\\groups\\group\\Update",'update') ;
-		$this->application()->accessRouter()->addController("oc\\ext\\groups\\group\\Delete",'delete') ;
-		$this->application()->accessRouter()->addController("oc\\ext\\groups\\group\\AddGroup",'addgroup') ;
-		$this->application()->accessRouter()->addController("oc\\ext\\groups\\thread\\Index",'thread.index') ;
-		$this->application()->accessRouter()->addController("oc\\ext\\groups\\thread\\Detail",'thread.detail') ;
-		$this->application()->accessRouter()->addController("oc\\ext\\groups\\thread\\Add",'thread.add') ;
-		$this->application()->accessRouter()->addController("oc\\ext\\groups\\thread\\AddPoll",'thread.addpoll') ;
-		$this->application()->accessRouter()->addController("oc\\ext\\groups\\thread\\Update",'thread.update') ;
-		$this->application()->accessRouter()->addController("oc\\ext\\groups\\thread\\Delete",'thread.delete') ;
 	}
-	
 }
 
 ?>
