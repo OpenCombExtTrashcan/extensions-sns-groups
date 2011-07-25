@@ -1,8 +1,8 @@
-.allgroups{ overflow:hidden; zoom:1;border:1px solid #ccc;padding:20px;}
-.allgroups h4{ font-size:14px; font-weight:bold; color:#005eac; border-bottom:1px solid #ccc;padding-bottom:6px;margin-bottom:20px;}
+.allgroups,.addgroups{ overflow:hidden; zoom:1;border:1px solid #ccc;padding:20px;}
+.allgroups h4,.addgroups h4{ font-size:14px; font-weight:bold; color:#005eac; border-bottom:1px solid #ccc;padding-bottom:6px;margin-bottom:20px;}
 .allgroups li{width:270px; padding:10px; float:left; display:inline; margin:0px; height:55px; margin:0 4px 10px 0;}
 
-.allgroups_avatar{height:48px; width:48px; overflow:hidden; padding:1px; border:1px solid #ccc; display:block; float:left; margin-right:6px;}
+.allgroups_avatar{height:48px; width:48px; overflow:hidden; padding:1px; border:1px solid #ccc; display:block; float:left; margin-right:8px;}
 .allgroups_avatar img{ height:48px; width:48px;}
 .allgroups_info{ float:left; height:50px; width:200px; overflow:hidden;}
 .allgroups_info h5{margin-bottom:10px;margin-top:4px;}
@@ -11,3 +11,65 @@
 .allgroups_info h5 span{ font-size:12px; color:#666;}
 .allgroups_info p a{margin:0 6px 0 0;}
 .allgroups_info p a:hover{color:#fff; background:#005eac; text-decoration:none}
+
+
+.addgroups h5{font-size:16px; font-weight:bold;margin:0 0 20px 77px;}
+.addgroups .addgroups_btn {
+	margin:0 0 10px 136px;
+	width:84px;
+	height:25px;
+	font-size:16px;
+	line-height:25px;
+	cursor:pointer;
+	background:#005eac;
+	color:#fff;
+	border:1px solid #024073
+}
+.addgroups .jc_message_queue{margin-bottom:20px;}
+.addgroups form .jc_message_queue {
+	margin-bottom:0;
+	float:left;
+	background-color: #FFF4F0;
+	border-color: #FF3510;
+	border-style: solid;
+	border-width: 1px;
+	height: 16px;
+	padding: 2px 15px;
+	text-align: left;
+}
+
+.addgroups{
+	border:1px solid #ccc;
+	padding:20px;
+}
+.addgroups div{
+	margin:0 0 20px 0;
+	height:22px;
+}
+.addgroups strong {
+	width:130px;
+	display: block;
+	float: left;
+	padding-top:2px;
+	text-align: right;
+	vertical-align: middle;
+	font-size:13px;
+	font-weight:bold;
+	line-height:20px;
+}
+.addgroups span {
+	float:left;
+}
+.addgroups_text {
+	width:200px;
+	height:16px;
+	padding:2px;
+	border:1px solid #ddd;
+}
+.addgroups input,.addgroups select{
+	margin-left:6px;
+}
+.addgroups select {
+	height:20px;
+	margin-top:2px;
+}
