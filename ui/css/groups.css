@@ -1,5 +1,5 @@
-.allgroups,.addgroups,.threadList{ overflow:hidden; zoom:1;border:1px solid #ccc;padding:20px;}
-.allgroups h4,.addgroups h4,.threadList h4{ font-size:14px; font-weight:bold; color:#005eac; border-bottom:1px solid #ccc;padding-bottom:6px;margin-bottom:20px;}
+.allgroups,.addgroups,.threadList,.updateGroups{ overflow:hidden; zoom:1;border:1px solid #ccc;padding:20px;}
+.allgroups h4,.addgroups h4,.threadList h4,.updateGroups h4{ font-size:14px; font-weight:bold; color:#005eac; border-bottom:1px solid #ccc;padding-bottom:6px;margin-bottom:20px;}
 .allgroups li{width:270px; padding:10px; float:left; display:inline; margin:0px; height:55px; margin:0 4px 10px 0;}
 
 .allgroups_avatar{height:48px; width:48px; overflow:hidden; padding:1px; border:1px solid #ccc; display:block; float:left; margin-right:8px;}
@@ -13,8 +13,8 @@
 .allgroups_info p a:hover{color:#fff; background:#005eac; text-decoration:none}
 
 
-.addgroups h5{font-size:16px; font-weight:bold;margin:0 0 20px 77px;}
-.addgroups .addgroups_btn {
+.addgroups h5,.updateGroups h5{font-size:16px; font-weight:bold;margin:0 0 20px 77px;}
+.addgroups .addgroups_btn,.updateGroups .updateGroups_btn {
 	margin:0 0 10px 136px;
 	width:84px;
 	height:25px;
@@ -25,8 +25,8 @@
 	color:#fff;
 	border:1px solid #024073
 }
-.addgroups .jc_message_queue{margin-bottom:20px;}
-.addgroups form .jc_message_queue {
+.addgroups .jc_message_queue,.updateGroups .jc_message_queue{margin-bottom:20px;}
+.addgroups form .jc_message_queue,.updateGroups form .jc_message_queue {
 	margin-bottom:0;
 	float:left;
 	background-color: #FFF4F0;
@@ -38,15 +38,11 @@
 	text-align: left;
 }
 
-.addgroups{
-	border:1px solid #ccc;
-	padding:20px;
-}
-.addgroups div{
+.addgroups div,.updateGroups div{
 	margin:0 0 20px 0;
 	height:22px;
 }
-.addgroups strong {
+.addgroups strong,.updateGroups strong {
 	width:130px;
 	display: block;
 	float: left;
@@ -57,7 +53,7 @@
 	font-weight:bold;
 	line-height:20px;
 }
-.addgroups span {
+.addgroups span,.updateGroups span {
 	float:left;
 }
 .addgroups_text {
@@ -66,10 +62,10 @@
 	padding:2px;
 	border:1px solid #ddd;
 }
-.addgroups input,.addgroups select{
+.addgroups input,.addgroups select,.updateGroups input,.updateGroups select{
 	margin-left:6px;
 }
-.addgroups select {
+.addgroups select,.updateGroups select {
 	height:20px;
 	margin-top:2px;
 }
