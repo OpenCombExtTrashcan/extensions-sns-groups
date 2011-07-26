@@ -83,5 +83,6 @@
 
 /*Poll*/
 .poll{margin:10px 0 0 0; background:#f8fcff; border:1px solid #e3eef8;padding:10px 10px 10px 200px;}
-.poll_tit{color:#005eac; font-weight:bold; font-size:14px;}
+.poll_tit{color:#005eac; font-weight:bold; font-size:14px;margin-bottom:6px;}
 .poll_tit span{ font-weight:normal; color:#999; font-size:12px;}
+.items_ceil{height:20px; line-height:20px;}

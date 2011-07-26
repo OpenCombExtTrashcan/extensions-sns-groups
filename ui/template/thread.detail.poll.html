@@ -5,7 +5,7 @@
 	<if "$isInvolved!=1">
 	<div id="items">
 		<foreach for="$theModel->child('poll')->child('item')->childIterator()" item="row" idx="i">
-		<div>
+		<div class="items_ceil">
 			<span class='itemContent'>投票内容{=$i+1}</span>：<input type="checkbox" class="items" name="item[]" id="item[]" value="{=$row->data('iid')}" onClick="checkItemSum(this)" />{=$row->data('title')}
 		</div>
 		</foreach>
@@ -13,7 +13,7 @@
 	<else/>
 	<div id="items">
 		<foreach for="$theModel->child('poll')->child('item')->childIterator()" item="row" idx="i">
-		<div>
+		<div class="items_ceil">
 			<span class='itemContent'>投票内容{=$i+1}</span>：{=$row->data('title')}<span class="votes"> ({=$row->data('votes')}票)</span>
 		</div>
 		</foreach>
