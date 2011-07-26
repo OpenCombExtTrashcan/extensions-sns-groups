@@ -1,20 +1,22 @@
 <css src="groups.css" />
-<div class="allgroups">
+<div class="addThread">
 <h4>发布新话题</h4>
 {* 显示 当前视图 的消息队列 }
 <msgqueue for="$theView" />
 
 <form action="" method="post">
-	<div>
-		<label>群组：</label><widget id="group"/>
+	<div class="chooseThread">
+		<label>群组：</label>
+		<widget id="group"/>
 		<msgqueue for="$theView->widget('group')" />
 	</div>
-	<div>
-		<label>标题：</label><widget id="title"/>
+	<div class="threadTit">
+		<label>标题：</label>
+		<widget id="title"/>
 		<msgqueue for="$theView->widget('title')" />
 	</div>
-	<div>
-		<label>内容：</label><widget id="content"/>
+	<div class="threadContent_border">
+		<widget id="content" attr.class="threadContent"/>
 		<msgqueue for="$theView->widget('content')" />
 	</div>
 	<views name='pollView'/>

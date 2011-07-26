@@ -1,5 +1,5 @@
-.allgroups,.addgroups,.threadList,.updateGroups,.threadDetails{ overflow:hidden; zoom:1;border:1px solid #ccc;padding:20px;}
-.allgroups h4,.addgroups h4,.threadList h4,.updateGroups h4{ font-size:14px; font-weight:bold; color:#005eac; border-bottom:1px solid #ccc;padding-bottom:6px;margin-bottom:20px;}
+.allgroups,.addgroups,.threadList,.updateGroups,.threadDetails,.addThread{ overflow:hidden; zoom:1;border:1px solid #ccc;padding:20px;}
+.allgroups h4,.addgroups h4,.threadList h4,.updateGroups h4,.addThread h4{ font-size:14px; font-weight:bold; color:#005eac; border-bottom:1px solid #ccc;padding-bottom:6px;margin-bottom:20px;}
 .allgroups li{width:270px; padding:10px; float:left; display:inline; margin:0px; height:55px; margin:0 4px 10px 0;}
 
 .allgroups_avatar{height:48px; width:48px; overflow:hidden; padding:1px; border:1px solid #ccc; display:block; float:left; margin-right:8px;}
@@ -14,15 +14,18 @@
 
 
 .addgroups h5,.updateGroups h5{font-size:16px; font-weight:bold;margin:0 0 20px 77px;}
-.addgroups .addgroups_btn,.updateGroups .updateGroups_btn,.vote_btn{
+.addgroups .addgroups_btn,.updateGroups .updateGroups_btn,.vote_btn,.addthread_btn{
 	margin:0 0 10px 136px;
 	padding:2px 15px;
+	_padding:4px 15px 1px;
+	font-size:12px;
 	cursor:pointer;
 	background:#005eac;
 	color:#fff;
 	border-color: #B8D4E8 #124680 #124680 #B8D4E8;
     border-style: solid;
     border-width: 1px;
+	vertical-align:middle
 }
 .addgroups .jc_message_queue,.updateGroups .jc_message_queue{margin-bottom:20px;}
 .addgroups form .jc_message_queue,.updateGroups form .jc_message_queue {
@@ -87,3 +90,11 @@
 .items_ceil{height:20px; line-height:20px;}
 .items_ceil input{ vertical-align:middle; margin:0 4px 0 0;}
 .vote_btn{margin:10px 0 10px 66px;}
+
+/*add thread*/
+.addThread label,.chooseThread select{ vertical-align:middle}
+.threadTit{margin:10px 0 0;}
+.threadTit input { border:1px solid #ccc; padding:1px; height:17px; width:300px; vertical-align:middle}
+.threadContent_border{background:#eee; border:1px solid #ccc;padding:6px; margin:10px 0;}
+.threadContent{width:874px;resize:none; height:200px; border:1px solid #ccc; overflow-x:hidden; overflow-y: auto; color:#333; font-size:12px;padding:4px;}
+.addthread_btn{margin:0;}
