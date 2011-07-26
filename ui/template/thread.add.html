@@ -1,22 +1,26 @@
+<css src="groups.css" />
+<div class="allgroups">
+<h4>发布新话题</h4>
 {* 显示 当前视图 的消息队列 }
 <msgqueue for="$theView" />
 
 <form action="" method="post">
 	<div>
-		群组：<widget id="group"/>
+		<label>群组：</label><widget id="group"/>
 		<msgqueue for="$theView->widget('group')" />
 	</div>
 	<div>
-		标题：<widget id="title"/>
+		<label>标题：</label><widget id="title"/>
 		<msgqueue for="$theView->widget('title')" />
 	</div>
 	<div>
-		内容：<widget id="content"/>
+		<label>内容：</label><widget id="content"/>
 		<msgqueue for="$theView->widget('content')" />
 	</div>
 	<views name='pollView'/>
 	
 	<input type="hidden" id="t" name="t" value="{= $theRequest->get('t')}" />
-	<input type="submit" value="submit" />
+	<input type="submit" value="发布话题" class="addthread_btn" />
 	
 </form>
+</div>
