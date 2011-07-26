@@ -18,8 +18,9 @@
 	<div class="threadContent_border">
 		<widget id="content" attr.class="threadContent"/>
 		<msgqueue for="$theView->widget('content')" />
+		<views name='pollView'/>
 	</div>
-	<views name='pollView'/>
+	
 	
 	<input type="hidden" id="t" name="t" value="{= $theRequest->get('t')}" />
 	<input type="submit" value="发布话题" class="addthread_btn" />
