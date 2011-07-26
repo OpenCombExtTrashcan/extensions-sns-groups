@@ -1,5 +1,5 @@
-.allgroups,.addgroups{ overflow:hidden; zoom:1;border:1px solid #ccc;padding:20px;}
-.allgroups h4,.addgroups h4{ font-size:14px; font-weight:bold; color:#005eac; border-bottom:1px solid #ccc;padding-bottom:6px;margin-bottom:20px;}
+.allgroups,.addgroups,.threadList{ overflow:hidden; zoom:1;border:1px solid #ccc;padding:20px;}
+.allgroups h4,.addgroups h4,.threadList h4{ font-size:14px; font-weight:bold; color:#005eac; border-bottom:1px solid #ccc;padding-bottom:6px;margin-bottom:20px;}
 .allgroups li{width:270px; padding:10px; float:left; display:inline; margin:0px; height:55px; margin:0 4px 10px 0;}
 
 .allgroups_avatar{height:48px; width:48px; overflow:hidden; padding:1px; border:1px solid #ccc; display:block; float:left; margin-right:8px;}
@@ -73,3 +73,9 @@
 	height:20px;
 	margin-top:2px;
 }
+
+.threadList ul{margin-bottom:10px;}
+.threadList li{padding:5px 0; height:16px; line-height:16px;margin:0px; background:url(/platform/ui/images/column_line.gif) repeat-x 0 bottom; list-style-type:none}
+.threadList span{font-size:14px;  float:left;}
+.threadList span a:hover{ text-decoration:none; color:#f90}
+.threadList em{ float:right;}
