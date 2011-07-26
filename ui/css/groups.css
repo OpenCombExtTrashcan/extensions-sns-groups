@@ -78,5 +78,10 @@
 
 .threadDetails h4{ border-bottom:1px solid #ccc;padding-bottom:6px;margin-bottom:10px;}
 .thread_index{font-weight:bold;}
-.threadName{color:#747474;}
-.fromGroup{float:right;color:#747474;}
+.threadName{color:#999;}
+.fromGroup{float:right;color:#999;}
+
+/*Poll*/
+.poll{margin:10px 0 0 0; background:#f8fcff; border:1px solid #e3eef8;padding:10px 10px 10px 200px;}
+.poll_tit{color:#005eac; font-weight:bold; font-size:14px;}
+.poll_tit span{ font-weight:normal; color:#999; font-size:12px;}

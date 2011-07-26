@@ -1,5 +1,6 @@
-	<div>
-		最多选择：{=$theModel->data('poll.maxitem')}
+<div class="poll">
+	<div class="poll_tit">
+		参与投票 <span>(可选{=$theModel->data('poll.maxitem')}项)</span>
 	</div>
 	<if "$isInvolved!=1">
 	<div id="items">
@@ -13,7 +14,7 @@
 	<div id="items">
 		<foreach for="$theModel->child('poll')->child('item')->childIterator()" item="row" idx="i">
 		<div>
-			<span class='itemContent'>投票内容{=$i+1}</span>：{=$row->data('title')} 票数: {=$row->data('votes')}
+			<span class='itemContent'>投票内容{=$i+1}</span>：{=$row->data('title')}<span class="votes"> ({=$row->data('votes')}票)</span>
 		</div>
 		</foreach>
 	</div>
@@ -42,3 +43,4 @@
 	<input type="hidden" id="maxitem" name="maxitem" value="{= $theModel->data('poll.maxitem')}" />
 	<input type="submit" value="submit" />
 	</if>
+</div>
