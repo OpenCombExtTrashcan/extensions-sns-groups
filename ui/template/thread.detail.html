@@ -1,11 +1,13 @@
+<css src="groups.css" />
+
+<div class="threadDetails">
 {* 显示 当前视图 的消息队列 }
 <msgqueue for="$theView" />
 <form action="/?c=groups.thread.addpoll" method="post">
+	<h4><a href="" class="thread_index">话题</a> > <span class="threadName">话题的名称</span><span class="fromGroup">来自群组：<a href="">{=$theModel->data('title')}</a></span></h4>
 	<div>
-		群组：{=$theModel->data('title')}
-	</div>
-	<div>
-		内容：{=$theModel->data('content')}
+		{=$theModel->data('content')}
 	</div>
 	<views name='pollView'/>
 </form>
+</div>

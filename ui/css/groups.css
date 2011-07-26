@@ -1,4 +1,4 @@
-.allgroups,.addgroups,.threadList,.updateGroups{ overflow:hidden; zoom:1;border:1px solid #ccc;padding:20px;}
+.allgroups,.addgroups,.threadList,.updateGroups,.threadDetails{ overflow:hidden; zoom:1;border:1px solid #ccc;padding:20px;}
 .allgroups h4,.addgroups h4,.threadList h4,.updateGroups h4{ font-size:14px; font-weight:bold; color:#005eac; border-bottom:1px solid #ccc;padding-bottom:6px;margin-bottom:20px;}
 .allgroups li{width:270px; padding:10px; float:left; display:inline; margin:0px; height:55px; margin:0 4px 10px 0;}
 
@@ -75,3 +75,8 @@
 .threadList span{font-size:14px;  float:left;}
 .threadList span a:hover{ text-decoration:none; color:#f90}
 .threadList em{ float:right;}
+
+.threadDetails h4{ border-bottom:1px solid #ccc;padding-bottom:6px;margin-bottom:10px;}
+.thread_index{font-weight:bold;}
+.threadName{color:#747474;}
+.fromGroup{float:right;color:#747474;}
