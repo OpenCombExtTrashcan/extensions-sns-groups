@@ -84,7 +84,7 @@
 .fromGroup{float:right;color:#999;}
 
 /*Poll*/
-.poll{margin:10px 0 0 0; background:#f8fcff; border:1px solid #e3eef8;padding:10px 10px 10px 200px;}
+.poll,.addPoll{margin:10px 0 0 0; background:#f8fcff; border:1px solid #e3eef8;padding:10px 10px 10px 200px;}
 .poll_tit{color:#005eac; font-weight:bold; font-size:14px;margin-bottom:6px;}
 .poll_tit span{ font-weight:normal; color:#999; font-size:12px;}
 .items_ceil{height:20px; line-height:20px;}
@@ -100,4 +100,9 @@
 .addthread_btn{margin:10px 0 0;}
 
 /*add poll*/
-.itemContent {width:80px; text-align:right; display:block; float:left}
+.itemContent,.chooseNum_tit {width:70px; text-align:right; display:block; float:left;vertical-align:middle}
+.addPoll{padding:10px;}
+.addPoll .items_ceil{margin-top:4px; }
+.addPoll .items_ceil input{width:300px; height:14px; padding:2px; border:1px solid #ddd;}
+.moreitems{margin:6px 0 0 80px; display:block; width:90px;}
+.chooseNum select{margin-left:4px;}

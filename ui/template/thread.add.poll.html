@@ -1,6 +1,6 @@
-<div class="poll">
-	<div>
-		最多选择：<widget id="poll_maxitem"/>
+<div class="addPoll">
+	<div class="chooseNum">
+		<span class='chooseNum_tit'>最多选择</span>：<widget id="poll_maxitem"/>
 		<msgqueue for="$theView->widget('poll_maxitem')" />
 	</div>
 	
@@ -12,7 +12,7 @@
 		</div>
 		</loop>
 		
-	</div><a href='javascript:;' onClick='addItem()'>+增加更多选项</a>
+	</div><a href='javascript:;' onClick='addItem()' class="moreitems">+增加更多选项</a>
 	<input type="hidden" id="itemSum" name="itemSum" value="5" />
 	<script>
 	function addItem(){
