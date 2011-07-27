@@ -1,16 +1,17 @@
-	<div>
-		最多选择：<widget id="poll_maxitem"/>
+<div class="updatePoll">
+	<div class="chooseNum">
+		<span class='chooseNum_tit'>最多选择</span>：<widget id="poll_maxitem"/>
 		<msgqueue for="$theView->widget('poll_maxitem')" />
 	</div>
 	
 	<div id="items">
 		<foreach for="$theModel->child('poll')->child('item')->childIterator()" item="row" idx="i">
-		<div>
-			<span class='itemContent'>投票内容{=$i+1}</span>：<a href='javascript:;' onClick='addItem()'>增加</a><widget id="'poll_item_title_'.$i" id.type="expression" />
+		<div class="items_ceil">
+			<span class='itemContent'>投票内容{=$i+1}</span>：<widget id="'poll_item_title_'.$i" id.type="expression" />
 			<msgqueue for="$theView->widget('poll_item_title_'.$i)" />
 		</div>
 		</foreach>
-	</div>
+	</div><a href='javascript:;' onClick='addItem()' class="moreitems">+增加更多选项</a>
 	<input type="hidden" id="itemSum" name="itemSum" value="{=$theModel->child('poll')->child('item')->childrenCount()}" />
 	<script>
 	function addItem(){
@@ -25,3 +26,4 @@
 		jQuery("#itemSum").val(nowNum);
 	}
 	</script>
+</div>
